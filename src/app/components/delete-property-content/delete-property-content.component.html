@@ -1,0 +1,36 @@
+<div class="deletePropertyDiv fieldsAndDataManage">
+    <h2 class="title">Delete Here</h2>
+    <mat-form-field appearance="outline" class="searchPropertyDelete addDetails" [formGroup]="deleteFormGroup">
+        <mat-label>Delete Property</mat-label>
+            <input matInput placeholder="Search By Name..." formControlName="deleteProperty" (input)="deleteProperty()">
+        </mat-form-field>
+    <div *ngIf = "deleteNotFoundText">
+        <h4 class="notFoundText title">No data found<br/>with this given name.</h4>
+    </div>
+    <mat-radio-group class="mainRadioButton"  *ngIf="showSellerBuyerBtn">
+        <mat-radio-button value="seller" class="sellerRadioButton" (click)="sellerDetails()">Seller</mat-radio-button>
+        <mat-radio-button value="buyer" (click)="buyerDetails()">Buyer</mat-radio-button>
+    </mat-radio-group>
+    <mat-card class="propertyDetailsCard" *ngFor = "let item of filteredDeletePropertyData">
+        <mat-card-subtitle class="propertyDetails">Name: {{item.name}}</mat-card-subtitle>
+        <mat-card-subtitle class="propertyDetails">Address: {{item.address}}</mat-card-subtitle>
+        <mat-card-subtitle class="propertyDetails">Number: {{item.number}}</mat-card-subtitle>
+        <mat-card-subtitle class="propertyDetails" *ngIf="showPropertyAddress">Property Address: {{item.propertyAddress}}</mat-card-subtitle>
+        <mat-card-subtitle class="propertyDetails">Property Type: {{item.propertyType}}</mat-card-subtitle>
+        <mat-card-subtitle class="propertyDetails">What To Do: {{item.whatToDo}}</mat-card-subtitle>
+        <mat-card-subtitle class="propertyDetails">Property Area(gaj): {{item.propertyArea}}</mat-card-subtitle>
+        <mat-card-subtitle class="propertyDetails">Property Cost(₹): {{item.propertyCost}}</mat-card-subtitle>
+        <mat-card-subtitle class="propertyDetails">Date Of Approach: {{item.dateOfApproach}}</mat-card-subtitle>
+        <mat-accordion>
+            <mat-expansion-panel class="deletePanel">
+                <mat-expansion-panel-header>
+                    <button mat-raised-button class="deletePropertyBtn">Delete</button>
+                </mat-expansion-panel-header>
+                    <mat-panel-title class="deletePanelTitle title">Are You Sure?</mat-panel-title>
+                    <mat-action-row>
+                        <button mat-raised-button class="deletePropertyBtn" (click)="deletePropertyCard(item.name)">Sure</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card>
+</div>

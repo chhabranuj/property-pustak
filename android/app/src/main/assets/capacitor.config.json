@@ -1,0 +1,6 @@
+{
+	"appId": "com.property.pustak",
+	"appName": "Property Pustak",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

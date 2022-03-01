@@ -1,0 +1,113 @@
+<mat-tab-group class="ownerData">
+
+    <!-- SHOW PROPERTY TAB -->
+    <mat-tab label="Show" class="showPropertyTab" [formGroup]="showFormGroup">
+        <div class="showPropertyDiv fieldsAndDataManage">
+            <h2 class="title">Your Properties</h2>
+            <mat-form-field appearance="outline" class="searchPropertyShow addDetails">
+                <mat-label>Search Property</mat-label>
+                <input matInput placeholder="Search By Name..." formControlName="showProperty" (input)="showProperty()">
+            </mat-form-field>
+            <div  class="showNotFoundText" *ngIf = "showNotFoundText">
+                <h4 class="notFoundText title">No data found<br/>with this given name.</h4>
+            </div>
+            <mat-radio-group class="mainRadioButton"  *ngIf="showSellerBuyerBtn">
+                <mat-radio-button value="seller" class="sellerRadioButton" (click)="showSellerDetails()">Seller</mat-radio-button>
+                <mat-radio-button value="buyer" (click)="showBuyerDetails()">Buyer</mat-radio-button>
+            </mat-radio-group>
+            <mat-card class="propertyDetailsCard" *ngFor = "let item of filteredShowPropertyData">
+                <mat-card-subtitle class="propertyDetails">Name: {{item.name}}</mat-card-subtitle>
+                <mat-card-subtitle class="propertyDetails">Address: {{item.address}}</mat-card-subtitle>
+                <mat-card-subtitle class="propertyDetails">Number: {{item.number}}</mat-card-subtitle>
+                <mat-card-subtitle class="propertyDetails" *ngIf="showAddressInputField">Property Address: {{item.propertyAddress}}</mat-card-subtitle>
+                <mat-card-subtitle class="propertyDetails">Property Type: {{item.propertyType}}</mat-card-subtitle>
+                <mat-card-subtitle class="propertyDetails">What To Do: {{item.whatToDo}}</mat-card-subtitle>
+                <mat-card-subtitle class="propertyDetails">Property Area(gaj): {{item.propertyArea}}</mat-card-subtitle>
+                <mat-card-subtitle class="propertyDetails">Property Cost(₹): {{item.propertyCost}}</mat-card-subtitle>
+                <mat-card-subtitle class="propertyDetails">Date Of Approach: {{item.dateOfApproach}}</mat-card-subtitle>
+            </mat-card>
+        </div>
+    </mat-tab>
+
+    <!-- ADD PROPERTY TAB -->
+    <mat-tab label="Add" class="addPropertyTab">
+        <form class="fieldsAndDataManage" [formGroup]="addFormGroup">
+            <h2 class="title">Add Property</h2>
+            <mat-radio-group class="mainRadioButton">
+                <mat-radio-button value="seller" class="sellerRadioButton" (click)="addSellerDetails()">Seller</mat-radio-button>
+                <mat-radio-button value="buyer" (click)="addBuyerDetails()">Buyer</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field appearance="outline" class="addName addDetails">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name..." formControlName="name" type="text">
+            </mat-form-field>
+            <span class="validator" *ngIf="this.addFormGroup.get('name')!.invalid && this.addFormGroup.get('name')!.touched">Name is required.</span>
+
+            <mat-form-field appearance="outline" class="addAddress addDetails">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Address..." formControlName="address" type="text">
+            </mat-form-field>
+            <span class="validator" *ngIf="this.addFormGroup.get('address')!.invalid && this.addFormGroup.get('address')!.touched">Address is required.</span>
+
+            <mat-form-field appearance="outline" class="addNumber addDetails">
+                <mat-label>Number</mat-label>
+                <input matInput placeholder="Number..." formControlName="number" type="number" (input)="setNumber()">
+            </mat-form-field>
+            <span class="validator" *ngIf="this.addFormGroup.get('number')!.invalid && this.addFormGroup.get('number')!.touched && !showNumberError">Number is required.</span>
+            <span class="validator" *ngIf="showNumberError">Number must be of 10 digits.</span>
+
+            <mat-form-field appearance="outline" class="addPropertyAddress addDetails" *ngIf="addressInputField">
+                <mat-label>Property Address</mat-label>
+                <input matInput placeholder="Property Address..." formControlName="propertyAddress" type="text">
+            </mat-form-field> 
+            <span class="validator" *ngIf="this.addFormGroup.get('propertyAddress')!.invalid && this.addFormGroup.get('propertyAddress')!.touched">Property Address is required.</span>
+
+            <mat-form-field appearance="outline" class="addPropertyArea addDetails">
+                <mat-label>Property Area(gaj)</mat-label>
+                <input matInput placeholder="Area..." formControlName="propertyArea" type="number">
+            </mat-form-field>
+            <span class="validator" *ngIf="this.addFormGroup.get('propertyArea')!.invalid && this.addFormGroup.get('propertyArea')!.touched">Property Area is required.</span>
+
+            <mat-form-field appearance="outline" class="addPropertyCost addDetails">
+                <mat-label>Property Cost(₹)</mat-label>
+                <input matInput placeholder="₹ Cost..." formControlName="propertyCost"  type="number">
+            </mat-form-field>
+            <span class="validator" *ngIf="this.addFormGroup.get('propertyCost')!.invalid && this.addFormGroup.get('propertyCost')!.touched">Property Cost is required.</span>
+
+            <mat-form-field appearance="outline" class="addDetails">
+                <mat-label>Select Property Type:-</mat-label>
+                <mat-select disableRipple  formControlName="propertyType">
+                    <mat-option value="Residential">Residential</mat-option>
+                    <mat-option value="Commercial">Commercial</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <span class="validator" *ngIf="this.addFormGroup.get('propertyType')!.invalid && this.addFormGroup.get('propertyType')!.touched">Property Type is required.</span>
+
+            <mat-form-field appearance="outline" class="dateOfApproach addDetails">
+                <mat-label>Date Of Approach</mat-label>
+                <input matInput placeholder="Date Of Approach" formControlName="dateOfApproach"  type="date">
+            </mat-form-field>
+            <span class="validator" *ngIf="this.addFormGroup.get('dateOfApproach')!.invalid && this.addFormGroup.get('dateOfApproach')!.touched">Date Of Approach is required.</span>
+
+            <label class="addPropertyLabel">What You Want To Do:-</label>
+            <span class="validator" *ngIf="this.addFormGroup.get('whatToDo')!.invalid && this.addFormGroup.get('whatToDo')!.touched">Please Select One.</span>
+            <div class="propertyType">
+                <mat-radio-group aria-label="Type Of Property:-" formControlName="whatToDo">
+                    <mat-radio-button value="Rent">Rent</mat-radio-button>
+                    <mat-radio-button value="Sell" class="propertyTypeBtn">Sell</mat-radio-button>
+                    <mat-radio-button value="Security">Security</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <button mat-raised-button class="addPropertyBtn" (click)="addPropertyData()">Add</button>
+            <div class="footer">
+                <h2 class="footerTitle">A Product By :- Anuj Chhabra</h2>
+            </div>
+        </form>
+    </mat-tab>
+
+    <!-- DELETE PROPERTY TAB  -->
+    <mat-tab label="Delete" *ngIf = "data">
+        <app-delete-property-content [data]="data"></app-delete-property-content>
+    </mat-tab>
+
+</mat-tab-group>

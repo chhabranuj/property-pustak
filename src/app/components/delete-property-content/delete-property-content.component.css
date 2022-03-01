@@ -1,0 +1,78 @@
+.propertyDetailsCard{
+    width: 30%;
+    margin-bottom: 10px;
+    background-color: #1f618d;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.fieldsAndDataManage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mainRadioButton{
+    margin-bottom: 15px;
+}
+
+.sellerRadioButton{
+    margin-right: 50px;
+}
+
+.deletePropertyBtn{
+    background-color: rgba(12, 35, 55, 0.1);
+    color: white;
+}
+
+.propertyDetails{
+    color: white;
+    font-size: larger;
+}
+
+.deletePanel{
+    background-color: #1f618d;
+    color: white;
+}
+
+.deletePanelTitle{
+    color: white;
+}
+
+.title{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 350;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.notFoundText{
+    margin-top: 25vh;
+    text-align: center;
+}
+
+.addDetails{
+    width: 30%;
+}
+
+@media (max-width: 600px){
+    .propertyDetailsCard{
+        width: 80%;
+    }
+
+    .addDetails{
+        width: 80%;
+    }
+
+    .propertyTypeBtn{
+        margin: 10px 30px;
+    }
+    
+    .showNotFoundText{
+        margin: 0;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

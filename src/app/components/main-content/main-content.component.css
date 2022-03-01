@@ -1,0 +1,130 @@
+::ng-deep .mat-tab-header {
+    width: 100%;
+    background-color: #1f618d;
+    position: fixed !important;
+    top: 10%;
+    z-index: 1000;
+}
+
+::ng-deep .mat-tab-label{
+    width: 33%;
+    color: white;
+    font-weight: bold;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+    margin-top: 8% !important;
+}
+
+::ng-deep .mat-form-field {
+    height: 75px;
+}
+
+::ng-deep .snackBar{
+    background-color: #1f618d;
+    color: white;
+}
+
+.mainRadioButton{
+    margin-bottom: 15px;
+}
+
+.sellerRadioButton{
+    margin-right: 50px;
+}
+
+.fieldsAndDataManage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.propertyDetailsCard{
+    width: 30%;
+    margin-bottom: 10px;
+    background-color: #1f618d;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.propertyDetails{
+    color: white;
+    font-size: larger;
+}
+
+.title{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 350;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.showNotFoundText{
+    margin-top: 12%;
+}
+
+.notFoundText{
+    text-align: center;
+}
+
+.addDetails{
+    width: 30%;
+}
+
+.validator{
+    color: red;
+    text-align: center !important;
+}
+
+.addPropertyLabel{
+    margin: 10px 0px;
+}
+
+.propertyTypeBtn{
+    margin: 10px 130px;
+}
+
+.addPropertyBtn{
+    margin: 15px;
+    color: white;
+    background-color: #1f618d;
+}
+
+.footer{
+    width: 100%;
+    background-color: #1f618d;
+}
+
+.footerTitle{
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    font-weight: 350;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 600px){
+    ::ng-deep .mat-tab-body-wrapper {
+        margin-top: 29% !important;
+    }
+    
+    .propertyDetailsCard{
+        width: 80%;
+    }
+
+    .addDetails{
+        width: 80%;
+    }
+
+    .propertyTypeBtn{
+        margin: 10px 30px;
+    }
+
+    .showNotFoundText{
+        margin: 0;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,27 @@
+.titleBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    background-color: #1f618d;    
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.titleIcon{
+    color: white;
+}
+
+.title{
+    margin: 7px 0px;
+    font-weight: 350;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.boldText{
+    font-weight: bold;
+}
